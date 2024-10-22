@@ -25,8 +25,8 @@ lambda1 = lambda_max/2
 out_coord <- fitLASSOstandardized(out$Xtilde, out$Ytilde, beta_start = rep(0, p), lambda = lambda1, eps = 1e-10)
 out_prox <- fitLASSOstandardized_prox(out$Xtilde, out$Ytilde, beta_start = rep(0, p), lambda = lambda1, eps = 1e-10, s = 0.1)
 out_coord$fmin - out_prox$fmin
-plot(out_coord$beta, out_prox$beta)
-
+plot(out_coord$beta, out_prox$beta, type = 'l')
+all.equal(out_coord$beta, out_prox$beta)
 
 # Check the implementation time
 microbenchmark(
