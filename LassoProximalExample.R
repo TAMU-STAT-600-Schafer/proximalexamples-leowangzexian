@@ -23,7 +23,22 @@ fitLASSOstandardized_prox <- function(Xtilde, Ytilde, lambda, beta_start = NULL,
   }
   
   # Proximal gradient-descent implementation
-
+  error = 1000
+  r = Ytilde - Xtilde %*% beta_start
+  beta = beta_start
+  while (error > eps) {
+    # move in the direction of the gradient of MSE
+    beta_move = beta + s * crossprod(Xtilde, r) / n
+    
+    # apply prox operator (soft) to beta_move
+    beta = soft(beta_move, s * lambda)
+    
+    # update the residual
+    r = r - Xtilde %*% (beta - beta_old)
+    
+    # calculate error
+    error = abs(lasso(Xtilde, Ytilde, beta_old, lambda) - lasso(Xtilde, Ytilde, beta, lambda))
+  }
   
   return(list(beta = beta, fmin = lasso(Xtilde, Ytilde, beta, lambda)))
 }

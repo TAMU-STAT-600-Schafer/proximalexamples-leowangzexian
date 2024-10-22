@@ -4,7 +4,7 @@
 # Lasso functions for coordinate descent
 source("LASSO_CoordinateDescent.R")
 # Functions written in the starter code
-source("StarterCode.R")
+source("LassoProximalExample.R")
 # For later time comparisons
 library(microbenchmark)
 #########################################
