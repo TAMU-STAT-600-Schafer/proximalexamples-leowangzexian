@@ -27,6 +27,8 @@ fitLASSOstandardized_prox <- function(Xtilde, Ytilde, lambda, beta_start = NULL,
   r = Ytilde - Xtilde %*% beta_start
   beta = beta_start
   while (error > eps) {
+    beta_old = beta
+    
     # move in the direction of the gradient of MSE
     beta_move = beta + s * crossprod(Xtilde, r) / n
     
