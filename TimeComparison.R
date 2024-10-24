@@ -44,8 +44,8 @@ plot(out_coord$beta, out_prox2$beta, type = 'l')
 all.equal(out_coord$beta, out_prox2$beta)
 all.equal(out_prox2$beta, out_prox$beta)
 
-plot(out_prox2$fmin)
-plot(out_prox2$fobj_vec[-c(1:40)])
+# plot(out_prox2$fmin)
+# plot(out_prox2$fobj_vec[-c(1:40)])
 
 # Check the implementation time
 microbenchmark(
