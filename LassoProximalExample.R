@@ -139,7 +139,7 @@ fitLASSOstandardized_ADMM <- function(Xtilde, Ytilde, lambda, beta_start = NULL,
                  crossprod(Xtilde, Ytilde) / n + (theta - eta) / tau)
     
     # update theta
-    theta = soft(beta - eta, lambda * tau)
+    theta = soft(beta + eta, lambda * tau)
     
     # update eta
     eta = eta + beta - theta
